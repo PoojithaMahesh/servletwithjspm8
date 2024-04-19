@@ -7,6 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>LOGINPAGE</h1>
+<%String message=(String)request.getAttribute("message"); %>
+<%if(message!=null){ %>
+<h1><%=message %></h1>
+<%}else{ %>
+<h1><%="Welcome to LOGIN PAGE" %></h1>
+<%} %>
+<form action="login" method="post">
+Email::<input type="email" name="email">
+<br>
+<br>
+Password::<input type="password" name="password">
+<br>
+<br>
+<input type="submit" value="LOGIN">
+
+</form>
 </body>
 </html>

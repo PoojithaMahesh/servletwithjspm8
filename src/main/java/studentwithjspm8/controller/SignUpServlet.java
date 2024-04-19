@@ -51,6 +51,7 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 		dispatcher.forward(req, resp);
 		
 	}else {
+		req.setAttribute("message", "Sorry Email already mapped to other student please give another email");
 		RequestDispatcher dispatcher=req.getRequestDispatcher("signup.jsp");
 		dispatcher.include(req, resp);
 	}
