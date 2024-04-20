@@ -26,4 +26,12 @@ public class StudentDao {
 		entityManager.persist(student);
 		entityTransaction.commit();
 	}
+	public void deleteStudentById(int id) {
+		EntityManager entityManager=getEntityManager();
+		Student dbStudent=entityManager.find(Student.class, id);
+		EntityTransaction entityTransaction=entityManager.getTransaction();
+		entityTransaction.begin();
+		entityManager.remove(dbStudent);
+		entityTransaction.commit();
+	}
 }

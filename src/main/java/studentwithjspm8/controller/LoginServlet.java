@@ -34,8 +34,9 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 //		value=true that enail is present in the database
 		if(password.equals(dbPassword)) {
 //			login success
-			PrintWriter printWriter=resp.getWriter();
-			printWriter.print("LOGIN SUCCESS");
+			req.setAttribute("students",students);
+			RequestDispatcher dispatcher=req.getRequestDispatcher("display.jsp");
+			dispatcher.forward(req, resp);
 		}else {
 //			invalid password
 			req.setAttribute("message", "Sorry Invalid Password");
