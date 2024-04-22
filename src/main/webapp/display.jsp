@@ -20,6 +20,7 @@
 <th>Phone</th>
 <th>Fees</th>
 <th>Delete</th>
+<th>Update</th>
 </tr>
 <%for(Student student:list){ %>
 <tr>
@@ -31,6 +32,7 @@
 <td><%=student.getPhone() %></td>
 <td><%=student.getFees() %></td>
 <td><a href="delete?id=<%=student.getId() %>">Delete</a></td>
+<td><a href="update?id=<%=student.getId() %>">Update</a></td>
 </tr>
 <%} %>
 </table>
