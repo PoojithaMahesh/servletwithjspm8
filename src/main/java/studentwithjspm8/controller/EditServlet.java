@@ -6,6 +6,7 @@ import javax.persistence.criteria.CriteriaBuilder.In;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +29,18 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
  
  StudentDao dao=new StudentDao();
  dao.updateStudent(student);
+// take the cookie
+ Cookie[] cookies=req.getCookies();
+ String nameofthestudentwhologgedinandchangedthedetails=null;
  
+ for(Cookie cookie:cookies) {
+	 if(cookie.getName().equals("studentwhologgedinandtriedtochangethedetails")) {
+		 nameofthestudentwhologgedinandchangedthedetails=cookie.getValue();
+		 break;
+	 }
+ }
+ 
+ req.setAttribute("name", nameofthestudentwhologgedinandchangedthedetails);
  req.setAttribute("students", dao.getAllStudents());
  RequestDispatcher dispatcher=req.getRequestDispatcher("display.jsp");
  dispatcher.forward(req, resp);
