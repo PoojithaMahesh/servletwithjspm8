@@ -43,12 +43,6 @@ protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws S
 	HttpSession httpSession=req.getSession();
 	httpSession.setAttribute("studentnamewhologgein", nameofthestudentwhologgedin);
 	
-	
-	
-	
-	
-	
-	
 	if(value) {
 //		value=true that enail is present in the database
 		if(password.equals(dbPassword)) {
